@@ -1,4 +1,4 @@
-import { Player } from './Player';
+import { Player } from '../utils/player';
 
 // A new player starts with an empty hand
 test('a new player should start with an empty hand', () => {
