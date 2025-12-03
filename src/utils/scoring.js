@@ -14,7 +14,18 @@ export const calculateRoundScore = (hand) => {
       score *= 2;
     }
   });
+
+  // flip 7 bonus - 15 points for exactly 7 basic cards
+  const flipSevenBonus = basicCards.length === 7 ? 15 : 0;
+
+
+  // player bust if they have duplicate basic cards
+  const basicCardNames = basicCards.map(card => card.name);
+  const hasDuplicates = basicCardNames.length !== new Set(basicCardNames).size;
+    if (hasDuplicates) {
+    return 0; // score is reset to 0
+  }
   
-  // Action cards don't affect score directly
-  return score;
+  // Action cards don't affect score 
+  return score + flipSevenBonus;
 };

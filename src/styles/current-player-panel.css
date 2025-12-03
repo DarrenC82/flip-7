@@ -1,0 +1,466 @@
+.current-player-panel {
+  background: var(--white);
+  border: 4px solid var(--primary-blue);
+  border-radius: 15px;
+  padding: clamp(1rem, 3vw, 2rem);
+  margin: clamp(1rem, 3vw, 2rem) auto;
+  max-width: 1200px;
+  width: 90%;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  display: flex;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: flex-start;
+  justify-content: center;
+  animation: slideInFromBottom 1s ease-out;
+}
+
+@keyframes slideInFromBottom {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.current-player-panel.exiting {
+  animation: slideOutToBottom 0.8s ease-in forwards;
+}
+
+@keyframes slideOutToBottom {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+}
+
+.player-info {
+  flex-shrink: 0;
+}
+
+.current-player-panel h2 {
+  color: var(--primary-blue);
+  margin: 0 0 1rem 0;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-weight: bold;
+  text-align: center;
+}
+
+.player-info-content {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.player-scores {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.player-scores .score,
+.player-scores .game-score {
+  background: var(--flip7-yellow);
+  color: var(--flip7-navy);
+  padding: clamp(0.4rem, 1vw, 0.5rem) clamp(0.8rem, 1.5vw, 1rem);
+  border-radius: 8px;
+  border: 2px solid var(--flip7-navy);
+  font-weight: bold;
+  font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+  white-space: nowrap;
+}
+
+.player-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.draw-btn {
+  background: #28A745;
+  color: white;
+  border: 3px solid var(--flip7-navy);
+  padding: clamp(0.8rem, 2vw, 1.5rem) clamp(1.5rem, 3vw, 2.5rem);
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: clamp(140px, 20vw, 180px);
+  box-shadow: 4px 4px 0 var(--flip7-navy);
+}
+
+.draw-btn:hover {
+  background: #218838;
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0 var(--flip7-navy);
+}
+
+.current-player-panel .pass-btn {
+  background: var(--flip7-red);
+  color: white;
+  border: 3px solid var(--flip7-navy);
+  padding: clamp(0.8rem, 2vw, 1.5rem) clamp(1.5rem, 3vw, 2.5rem);
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: clamp(140px, 20vw, 180px);
+  box-shadow: 4px 4px 0 var(--flip7-navy);
+}
+
+.current-player-panel .pass-btn:hover {
+  background: var(--flip7-coral);
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0 var(--flip7-navy);
+}
+
+.current-player-cards {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.current-card-row {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.current-card-row h4 {
+  width: 100%;
+  color: var(--dark-gray);
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  text-align: left;
+}
+
+.current-hand-card {
+  width: clamp(45px, 5vw, 60px);
+  height: clamp(60px, 6.5vw, 80px);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(0.6rem, 1.2vw, 0.8rem);
+  font-weight: bold;
+  text-align: center;
+  border: 2px solid var(--dark-gray);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.current-hand-card:hover {
+  transform: translateY(-3px);
+}
+
+.current-hand-card .card-name {
+  font-size: clamp(0.7rem, 1.4vw, 0.9rem);
+  margin-bottom: 0.2rem;
+}
+
+.current-hand-card .card-type {
+  font-size: clamp(0.5rem, 1vw, 0.7rem);
+  text-transform: uppercase;
+}
+
+.current-hand-card .card-number {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: bold;
+  line-height: 1;
+}
+
+.current-hand-card.basic-card {
+  background: var(--card-basic-bg);
+  border-color: var(--card-basic-border);
+  color: var(--flip7-navy);
+  position: relative;
+}
+
+.current-hand-card.basic-card::before,
+.current-hand-card.basic-card::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 4px solid var(--flip7-yellow);
+}
+
+.current-hand-card.basic-card::before {
+  top: 4px;
+  left: 4px;
+  border-right: none;
+  border-bottom: none;
+  border-radius: 4px 0 0 0;
+}
+
+.current-hand-card.basic-card::after {
+  bottom: 4px;
+  right: 4px;
+  border-left: none;
+  border-top: none;
+  border-radius: 0 0 4px 0;
+}
+
+.current-hand-card.modifier-card {
+  background: var(--card-modifier-bg);
+  border-color: var(--flip7-navy);
+  color: white;
+}
+
+.current-hand-card.action-card {
+  background: var(--primary-orange);
+  border-color: var(--flip7-navy);
+  color: white;
+  cursor: pointer;
+}
+
+.current-hand-card.card-freeze {
+  background: var(--card-freeze-bg) !important;
+  border-color: var(--card-freeze-border) !important;
+  color: white !important;
+}
+
+.current-hand-card.card-flip-3 {
+  background: var(--card-flip3-bg) !important;
+  border-color: var(--flip7-navy) !important;
+  color: white !important;
+}
+
+.current-player-panel .current-hand-card.second-chance-card {
+  background: var(--card-second-chance-bg) !important;
+  border-color: var(--flip7-navy) !important;
+  color: var(--flip7-navy) !important;
+  box-shadow: 0 0 10px var(--card-second-chance-glow) !important;
+  cursor: default !important;
+}
+
+.current-hand-card.action-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+
+.action-card-container {
+  position: relative;
+}
+
+.target-selection {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border: 2px solid var(--flip7-navy);
+  border-radius: 8px;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 100;
+  min-width: 150px;
+}
+
+.target-label {
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: var(--flip7-navy);
+}
+
+.target-btn {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 0.3rem;
+  background: var(--flip7-yellow);
+  border: 2px solid var(--flip7-navy);
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.target-btn:hover {
+  background: var(--primary-orange);
+  color: white;
+  transform: translateX(2px);
+}
+
+.target-btn:last-child {
+  margin-bottom: 0;
+}
+
+.pending-action-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  border-radius: 15px;
+}
+
+.pending-action-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 4px solid var(--primary-orange);
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+.pending-action-card h3 {
+  color: var(--primary-orange);
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+}
+
+.pending-action-card p {
+  margin: 0 0 1.5rem 0;
+  font-size: 1.1rem;
+}
+
+.pending-action-card .action-card-container {
+  display: flex;
+  justify-content: center;
+}
+
+.pending-action-card .target-selection {
+  position: static;
+  margin-top: 0;
+}
+
+
+
+/* responsive  */
+
+/* Tablet and below */
+@media (max-width: 768px) {
+  .current-player-panel {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    margin: 1rem auto;
+  }
+
+  .current-player-panel h2 {
+    font-size: 1.5rem;
+  }
+
+  .player-info-content {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .player-actions {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  .draw-btn,
+  .current-player-panel .pass-btn {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    min-width: auto;
+    flex: 1;
+  }
+
+  .current-hand-card {
+    width: 50px;
+    height: 70px;
+    font-size: 0.7rem;
+  }
+
+  .current-hand-card .card-number {
+    font-size: 2rem;
+  }
+
+  .current-card-row {
+    gap: 0.5rem;
+  }
+
+  .pending-action-card {
+    padding: 1.5rem;
+  }
+
+  .pending-action-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .pending-action-card p {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .current-player-panel {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .current-player-panel h2 {
+    font-size: 1.2rem;
+  }
+
+  .player-scores .score,
+  .player-scores .game-score {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .draw-btn,
+  .current-player-panel .pass-btn {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .current-hand-card {
+    width: 45px;
+    height: 60px;
+    font-size: 0.6rem;
+  }
+
+  .current-hand-card .card-number {
+    font-size: 1.8rem;
+  }
+
+  .current-hand-card .card-name {
+    font-size: 0.7rem;
+  }
+
+  .current-card-row h4 {
+    font-size: 0.9rem;
+  }
+
+  .pending-action-card {
+    padding: 1rem;
+  }
+
+  .pending-action-card h3 {
+    font-size: 1rem;
+  }
+
+  .pending-action-card p {
+    font-size: 0.9rem;
+  }
+
+  .target-btn {
+    padding: 0.4rem;
+    font-size: 0.85rem;
+  }
+}
