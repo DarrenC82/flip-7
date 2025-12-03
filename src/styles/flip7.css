@@ -1,0 +1,19 @@
+.flip7-stamp {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-10deg);
+  font-size: 1.8rem;
+  font-weight: bold;
+  font-family: 'Arial', sans-serif;
+  color: white;
+  background: var(--primary-green);
+  border: 3px solid var(--dark-gray);
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  z-index: 1000;
+  pointer-events: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  text-align: center;
+  line-height: 1.2;
+}

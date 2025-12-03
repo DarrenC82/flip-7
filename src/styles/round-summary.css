@@ -1,0 +1,164 @@
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.round-summary-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.round-summary {
+  background: var(--white);
+  border: 4px solid var(--flip7-navy);
+  border-radius: 15px;
+  padding: 2rem;
+  max-width: 600px;
+  width: 90%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.round-summary h2 {
+  color: var(--flip7-red);
+  text-align: center;
+  margin: 0 0 1.5rem 0;
+  font-size: 2rem;
+}
+
+.score-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.score-table th {
+  background: var(--flip7-navy);
+  color: var(--white);
+  padding: 1rem;
+  text-align: left;
+  font-size: 1.1rem;
+}
+
+.score-table td {
+  padding: 1rem;
+  border-bottom: 2px solid var(--light-gray);
+  font-size: 1rem;
+}
+
+.score-table tbody tr:hover {
+  background: var(--flip7-bg);
+}
+
+.score-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.continue-btn {
+  background: var(--flip7-yellow);
+  color: var(--flip7-navy);
+  border: 3px solid var(--flip7-navy);
+  padding: 1rem 3rem;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  width: 100%;
+  box-shadow: 4px 4px 0 var(--flip7-navy);
+  transition: all 0.2s;
+}
+
+.continue-btn:hover {
+  background: var(--flip7-green);
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0 var(--flip7-navy);
+}
+
+
+/* Responsive */
+
+/* Tablet and below */
+@media (max-width: 768px) {
+  .round-summary {
+    padding: 1.5rem;
+    width: 95%;
+  }
+
+  .round-summary h2 {
+    font-size: 1.5rem;
+  }
+
+  .score-table th,
+  .score-table td {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .continue-btn {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .round-summary {
+    padding: 1rem;
+  }
+
+  .round-summary h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .score-table th,
+  .score-table td {
+    padding: 0.6rem;
+    font-size: 0.85rem;
+  }
+
+  .score-table th {
+    font-size: 0.95rem;
+  }
+
+  .continue-btn {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.95rem;
+  }
+}

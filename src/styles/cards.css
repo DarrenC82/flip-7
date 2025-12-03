@@ -1,0 +1,96 @@
+/* Card styling */
+.current-hand-card {
+  width: clamp(50px, 6vw, 80px);
+  height: clamp(70px, 8vw, 110px);
+  background: white;
+  border: 2px solid #333;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(0.3rem, 1vw, 0.5rem);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.current-hand-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.current-hand-card.draggable {
+  cursor: grab;
+}
+
+.current-hand-card.draggable:active {
+  cursor: grabbing;
+}
+
+.card-name {
+  font-size: clamp(0.7rem, 1.5vw, 1rem);
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+  text-transform: capitalize;
+}
+
+.card-type {
+  font-size: clamp(0.5rem, 1vw, 0.7rem);
+  color: #666;
+  text-transform: uppercase;
+}
+
+/* Card type colors */
+.basic-card {
+  border-color: var(--card-basic-border);
+  background: var(--card-basic-bg);
+  color: var(--flip7-navy);
+}
+
+.modifier-card {
+  border-color: var(--flip7-navy);
+  background: var(--card-modifier-bg);
+  color: white;
+}
+
+.action-card {
+  border-color: var(--flip7-navy);
+  background: var(--primary-orange);
+  color: white;
+}
+
+.action-card[data-card="freeze"] {
+  background: var(--card-freeze-bg);
+  border-color: var(--card-freeze-border);
+  color: white;
+}
+
+.action-card[data-card="flip3"] {
+  background: var(--card-flip3-bg);
+  border-color: var(--flip7-navy);
+  color: white;
+}
+
+.second-chance-card {
+  border-color: var(--flip7-navy);
+  background: var(--card-second-chance-bg);
+  color: var(--flip7-navy);
+  box-shadow: 0 0 10px var(--card-second-chance-glow);
+}
+
+/* Popup cards in PlayerArea */
+.popup-card {
+  width: clamp(45px, 5vw, 60px);
+  height: clamp(60px, 6.5vw, 80px);
+  background-color: #fff;
+  border: 2px solid #333;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(0.6rem, 1vw, 0.7rem);
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}

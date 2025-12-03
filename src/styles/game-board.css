@@ -1,0 +1,354 @@
+.flip7-board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2rem);
+  padding: clamp(1rem, 3vw, 2rem);
+  background: var(--flip7-bg);
+  min-height: 100vh;
+  font-family: 'Arial', sans-serif;
+  position: relative;
+}
+
+.player-row {
+  display: flex;
+  justify-content: center;
+  gap: clamp(1rem, 2vw, 2rem);
+}
+
+.deck-sidebar {
+  position: static;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin: 1rem auto;
+  max-width: 1200px;
+  z-index: 100;
+}
+
+.turn-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--flip7-cream);
+  padding: clamp(1rem, 2vw, 1.5rem);
+  border-radius: 12px;
+  border: 3px solid var(--flip7-navy);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  font-weight: bold;
+}
+
+.current-turn, .round-ended {
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  font-weight: bold;
+  color: var(--flip7-navy);
+  text-align: center;
+}
+
+.new-game-btn {
+  background: var(--flip7-red);
+  color: white;
+  border: 3px solid var(--flip7-navy);
+  padding: clamp(0.6rem, 1.5vw, 0.8rem) clamp(1rem, 2vw, 1.2rem);
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 1rem;
+  font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+  box-shadow: 3px 3px 0 var(--flip7-navy);
+}
+
+.new-game-btn:hover {
+  background: var(--flip7-coral);
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--flip7-navy);
+}
+
+
+.draw-pile, .discard-pile {
+  width: clamp(70px, 8vw, 100px);
+  height: clamp(95px, 11vw, 140px);
+  background: var(--flip7-blue);
+  border: 3px solid var(--flip7-navy);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  text-align: center;
+  color: white;
+  font-family: 'Arial', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 4px 4px 0 var(--flip7-navy);
+  font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+  font-weight: bold;
+}
+
+.draw-pile:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0 var(--flip7-navy);
+}
+
+.main-game-area {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Test Menu */
+.test-menu {
+  position: fixed;
+  right: 2rem;
+  top: 2rem;
+  background: var(--flip7-cream);
+  border: 4px solid var(--flip7-navy);
+  border-radius: 12px;
+  padding: 1.5rem;
+  max-height: 80vh;
+  overflow-y: auto;
+  z-index: 2000;
+  box-shadow: 6px 6px 0 var(--flip7-navy);
+  min-width: 300px;
+}
+
+.test-menu h3 {
+  margin: 0 0 1rem 0;
+  color: var(--flip7-red);
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.test-menu h4 {
+  margin: 0.5rem 0;
+  color: var(--flip7-navy);
+  font-size: 0.9rem;
+}
+
+.test-player-selector {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: white;
+  border: 2px solid var(--flip7-navy);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.test-player-selector label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: var(--flip7-navy);
+}
+
+.player-select-btn {
+  background: white;
+  color: var(--flip7-navy);
+  border: 2px solid var(--flip7-navy);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  margin: 0.2rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.player-select-btn:hover {
+  background: var(--flip7-yellow);
+}
+
+.player-select-btn.selected {
+  background: var(--flip7-pink);
+  color: white;
+  border-color: var(--flip7-navy);
+  box-shadow: 2px 2px 0 var(--flip7-navy);
+}
+
+.test-section {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--flip7-grey);
+}
+
+.test-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.test-cards button {
+  background: var(--flip7-blue);
+  color: white;
+  border: 2px solid var(--flip7-navy);
+  padding: 0.5rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: bold;
+  transition: all 0.2s;
+  box-shadow: 2px 2px 0 var(--flip7-navy);
+}
+
+.test-cards button:hover {
+  background: var(--flip7-yellow);
+  color: var(--flip7-navy);
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 var(--flip7-navy);
+}
+
+.clear-hand-btn {
+  background: var(--flip7-red);
+  color: white;
+  border: 3px solid var(--flip7-navy);
+  padding: 0.7rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+  transition: all 0.2s;
+  box-shadow: 3px 3px 0 var(--flip7-navy);
+}
+
+.clear-hand-btn:hover {
+  background: var(--flip7-coral);
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--flip7-navy);
+}
+
+/* Second Chance Message Overlay */
+.second-chance-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.second-chance-message {
+  background: var(--flip7-green);
+  color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 4px solid var(--flip7-navy);
+  text-align: center;
+  box-shadow: 8px 8px 0 var(--flip7-navy);
+  animation: secondChancePopIn 0.3s ease-out;
+}
+
+.second-chance-message h2 {
+  margin: 0 0 1rem 0;
+  font-size: 2rem;
+}
+
+.second-chance-message p {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+@keyframes secondChancePopIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* responsive  */
+
+/* Tablet and below */
+@media (max-width: 768px) {
+  .flip7-board {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .deck-sidebar {
+    gap: 1rem;
+  }
+
+  .draw-pile, .discard-pile {
+    width: 80px;
+    height: 110px;
+    font-size: 0.8rem;
+  }
+
+  .main-game-area {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .turn-controls {
+    padding: 1rem;
+  }
+
+  .current-turn, .round-ended {
+    font-size: 1rem;
+  }
+
+  .test-menu {
+    right: 0.5rem;
+    top: 0.5rem;
+    left: 0.5rem;
+    min-width: auto;
+    max-width: none;
+    padding: 1rem;
+    max-height: 70vh;
+  }
+
+  .test-menu h3 {
+    font-size: 1.2rem;
+  }
+
+  .player-row {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .flip7-board {
+    padding: 0.5rem;
+    gap: 0.5rem;
+  }
+
+  .deck-sidebar {
+    gap: 0.5rem;
+  }
+
+  .draw-pile, .discard-pile {
+    width: 70px;
+    height: 95px;
+    font-size: 0.7rem;
+    padding: 0.3rem;
+  }
+
+  .turn-controls {
+    padding: 0.8rem;
+  }
+
+  .new-game-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .test-menu {
+    padding: 0.8rem;
+  }
+
+  .test-cards button {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.75rem;
+  }
+}

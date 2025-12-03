@@ -1,0 +1,89 @@
+.animated-card {
+  font-family: 'Arial', sans-serif;
+}
+
+.animated-card .card-name {
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+  text-transform: capitalize;
+}
+
+.animated-card .card-type {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.animated-card .card-number {
+  font-size: 3rem;
+  font-weight: bold;
+  line-height: 1;
+}
+
+/* Basic Cards - Yellow with Blue Border */
+.animated-card.basic-card {
+  background: var(--card-basic-bg);
+  border-color: var(--card-basic-border);
+  color: var(--flip7-navy);
+  position: relative;
+}
+
+.animated-card.basic-card::before,
+.animated-card.basic-card::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 4px solid var(--flip7-yellow);
+}
+
+.animated-card.basic-card::before {
+  top: 4px;
+  left: 4px;
+  border-right: none;
+  border-bottom: none;
+  border-radius: 4px 0 0 0;
+}
+
+.animated-card.basic-card::after {
+  bottom: 4px;
+  right: 4px;
+  border-left: none;
+  border-top: none;
+  border-radius: 0 0 4px 0;
+}
+
+/* Modifier Cards - Green */
+.animated-card.modifier-card {
+  background: var(--card-modifier-bg);
+  border-color: var(--flip7-navy);
+  color: white;
+}
+
+/* Action Cards - Default Orange */
+.animated-card.action-card {
+  background: var(--primary-orange);
+  border-color: var(--flip7-navy);
+  color: white;
+}
+
+/* Freeze Card - Icy Cyan */
+.animated-card.freeze-card {
+  background: var(--card-freeze-bg);
+  border-color: var(--card-freeze-border);
+  color: white;
+}
+
+/* Flip 3 Card - Lilac */
+.animated-card.flip3-card {
+  background: var(--card-flip3-bg);
+  border-color: var(--flip7-navy);
+  color: white;
+}
+
+/* Second Chance Card - Golden with Glow */
+.animated-card.second-chance-card {
+  background: var(--card-second-chance-bg);
+  border-color: var(--flip7-navy);
+  color: var(--flip7-navy);
+  box-shadow: 0 0 10px var(--card-second-chance-glow);
+}

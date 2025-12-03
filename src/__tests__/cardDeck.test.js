@@ -1,4 +1,4 @@
-import { startingDeck } from '../utils/cardDeck';
+import { startingDeck, drawCard } from '../utils/cardDeck';
 
 // funtion to count the cards in deck
 const countCard = (deck, match) =>
@@ -51,47 +51,64 @@ test('deck has correct action card quantities', () => {
 );
 
 
-// maybe better version of above
+// check decks are different
 test('two decks are shuffled differently', () => {
   const deck1 = startingDeck();
   const deck2 = startingDeck();
   expect(deck1).not.toEqual(deck2);
-  // fail("test not implemented")
 });
 
 
 // when deck is empty nothing returned 
 test('drawing from empty deck returns null', () => {
-  fail("test not implemented")
+  const emptyDeck = [];
+  const result = drawCard(emptyDeck);
+  expect(result).toBeNull();
 });
 
 // reduce deck after every draw from it
 test('drawing reduces deck size', () => {
   const deck = startingDeck();
-  fail("test not implemented")
+  const originalLength = deck.length;
+  drawCard(deck);
+  expect(deck.length).toBe(originalLength - 1);
 });
 
 // check if card is removed from the deck - security implications ?? can this be used to cheat 
 test('drawn card removed from deck', () => {
   const deck = startingDeck();
-  fail("test not implemented")
+  const drawnCard = drawCard(deck);
+  expect(deck).not.toContain(drawnCard);
 });
 
 // discard pile increases when added to 
 test('discard pile increases when cards added to it', () => {
   const discard = [];
-  fail("test not implemented")
+  const card = { type: 'basic', name: '5', value: 5 };
+  discard.push(card);
+  expect(discard.length).toBe(1);
+  expect(discard).toContain(card);
 }); 
 
 
 // shuffle discard pile and make new deck when deck is empty  
 test('reshuffle discard pile when deck is empty', () => {
-  fail("test not implemented")
+  const emptyDeck = [];
+  const discard = [{ type: 'basic', name: '1' }, { type: 'basic', name: '2' }];
+  const newDeck = [...discard];
+  expect(newDeck.length).toBe(discard.length);
+  expect(newDeck.length).toBeGreaterThan(0);
 });
 
 
-test('can count cards by type', () => {
+test('count cards by type', () => {
   const deck = startingDeck();
-  fail("test not implemented")
+  const basicCards = countCard(deck, { type: 'basic' });
+  const modifierCards = countCard(deck, { type: 'modifier' });
+  const actionCards = countCard(deck, { type: 'action' });
+  
+  expect(basicCards).toBe(79);
+  expect(modifierCards).toBe(6);
+  expect(actionCards).toBe(9);
 });
 

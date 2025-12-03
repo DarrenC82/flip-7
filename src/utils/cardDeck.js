@@ -22,3 +22,10 @@ export const startingDeck = () => {
   return deck;
 };
 
+export const drawCard = (deck) => {
+  if (deck.length === 0) {
+    return null;
+  }
+  return deck.pop();
+};
+

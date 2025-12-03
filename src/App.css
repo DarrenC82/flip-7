@@ -1,18 +1,21 @@
-
 .header {
     display: flex;
     align-items: center;
-    padding: 1rem;
-    background: #f8f9fa;
-    border-bottom: 2px solid #ddd;
+    padding: 1.5rem;
+    background: var(--flip7-teal);
+    border-bottom: 3px solid var(--flip7-navy);
     position: relative;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .header h1 {
     flex: 1;
     text-align: center;
-    color: red;
+    color: white;
     margin: 0;
+    font-family: 'Arial', sans-serif;
+    font-size: 2.5rem;
+    font-weight: bold;
 }
 
 .hamburger {
@@ -27,7 +30,7 @@
 .hamburger span {
     width: 25px;
     height: 3px;
-    background: #333;
+    background: white;
     margin: 3px 0;
     transition: 0.3s;
 }
@@ -36,11 +39,14 @@
     position: absolute;
     top: 100%;
     right: 0;
-    background: white;
-    border: 1px solid #ddd;
+    background: var(--flip7-cream);
+    border: 2px solid var(--flip7-navy);
+    border-radius: 6px;
     display: none;
     flex-direction: column;
-    min-width: 150px;
+    min-width: 180px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 2000;
 }
 
 .nav-open {
@@ -50,10 +56,53 @@
 .nav a {
     padding: 1rem;
     text-decoration: none;
-    color: #333;
-    border-bottom: 1px solid #eee;
+    color: var(--flip7-navy);
+    border-bottom: 1px solid var(--flip7-cyan);
+    font-family: 'Arial', sans-serif;
+    font-weight: normal;
+    transition: all 0.2s;
 }
 
 .nav a:hover {
-    background: #f5f5f5;
+    background: var(--flip7-cyan);
+    color: var(--flip7-navy);
+}
+
+
+/* responsives */
+
+/* Tablet and below */
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .header {
+    padding: 0.8rem;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  .hamburger span {
+    width: 20px;
+    height: 2px;
+  }
+
+  .nav {
+    min-width: 150px;
+  }
+
+  .nav a {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
 }

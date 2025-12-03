@@ -1,29 +1,52 @@
+import { useState, useEffect } from 'react';
+import { detectLocale, getTranslation } from '../utils/translations';
+
 function Instructions() {
+	const [locale, setLocale] = useState('en');
+	const [t, setT] = useState(getTranslation('en'));
+
+	useEffect(() => {
+		detectLocale().then(detected => {
+			setLocale(detected);
+			setT(getTranslation(detected));
+		});
+	}, []);
+
+	const changeLanguage = (lang) => {
+		setLocale(lang);
+		setT(getTranslation(lang));
+	};
+
 	return (
 		<div className="instructions">
 			<header>
-				<h1>Flip 7</h1>
-				<p>Draw cards, avoid duplicates, reach 7 unique cards for bonus!</p>
+				<div style={{display: 'flex', gap: '0.5rem', justifyContent: 'center', marginBottom: '1rem'}}>
+					<button onClick={() => changeLanguage('en')} style={{fontWeight: locale === 'en' ? 'bold' : 'normal'}}>🇬🇧 EN</button>
+					<button onClick={() => changeLanguage('es')} style={{fontWeight: locale === 'es' ? 'bold' : 'normal'}}>🇪🇸 ES</button>
+					<button onClick={() => changeLanguage('fr')} style={{fontWeight: locale === 'fr' ? 'bold' : 'normal'}}>🇫🇷 FR</button>
+					<button onClick={() => changeLanguage('de')} style={{fontWeight: locale === 'de' ? 'bold' : 'normal'}}>🇩🇪 DE</button>
+				</div>
+				<div style={{fontSize: '0.8rem', color: '#666', marginBottom: '0.5rem'}}>
+					Detected: {locale} | Browser: {navigator.language}
+				</div>
+				<h1>{t.title}</h1>
+				<p>{t.subtitle}</p>
 			</header>
 
 			<main>
 				<section className="game-info">
-					<h2>How to Play</h2>
+					<h2>{t.howToPlay}</h2>
 					<ul>
-						<li>Draw cards to build your score</li>
-						<li>Avoid duplicate number cards (causes bust)</li>
-						<li>Get 7 unique number cards for "Flip 7" bonus</li>
-						<li>Use action cards: Freeze, Flip 3, Second Chance</li>
-						<li>Use modifier cards: +2, +4, +6, +8, +10, x2</li>
+						{t.rules.map((rule, i) => <li key={i}>{rule}</li>)}
 					</ul>
 				</section>
 
                 				<section className="card-info">
-					<h3>Deck Composition (94 cards)</h3>
+					<h3>{t.deckComposition}</h3>
 					<div className="card-types">
-						<div>Number Cards: 0-12 (79 total)</div>
-						<div>Modifier Cards: +2, +4, +6, +8, +10, x2 (6 total)</div>
-						<div>Action Cards: Freeze, Flip 3, Second Chance (9 total)</div>
+						<div>{t.numberCards}</div>
+						<div>{t.modifierCards}</div>
+						<div>{t.actionCards}</div>
 					</div>
 				</section>
             </main>

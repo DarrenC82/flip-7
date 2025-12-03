@@ -1,0 +1,71 @@
+/* Flip 7 Color Palette - Turquoise Harmony */
+
+:root {
+  /* Primary Turquoise Base */
+  --flip7-bg: #40E0D0;           /* Turquoise (base) */
+  --flip7-teal: #20B2AA;         /* Light sea green (darker turquoise) */
+  --flip7-cyan: #7FFFD4;         /* Aquamarine (lighter turquoise) */
+  
+  /* Complementary (Opposite on color wheel) */
+  --flip7-coral: #FF6B6B;        /* Coral red (complement to turquoise) */
+  --flip7-salmon: #FF8C94;       /* Soft salmon (lighter complement) */
+  
+  /* Analogous (Adjacent colors) */
+  --flip7-blue: #4169E1;         /* Royal blue (cooler neighbor) */
+  --flip7-green: #3CB371;        /* Medium sea green (warmer neighbor) */
+  
+  /* Triadic (120° apart) */
+  --flip7-yellow: #FFD93D;       /* Golden yellow (triadic harmony) */
+  --flip7-purple: #9B59B6;       /* Amethyst purple (triadic harmony) */
+  
+  /* Neutrals */
+  --flip7-navy: #1A2332;         /* Deep navy (dark neutral) */
+  --flip7-cream: #FFF9F0;        /* Warm cream (light neutral) */
+  --flip7-grey: #6C757D;         /* Cool grey (mid neutral) */
+  
+  /* Card Type Colors */
+  --card-basic-bg: #40E0D0;      /* Turquoise for basic cards */
+  --card-basic-border: #20B2AA;  /* Teal border for basic cards */
+  --card-modifier-bg: #3CB371;   /* Green for modifier cards */
+  --card-freeze-bg: #4169E1;     /* Blue for freeze */
+  --card-freeze-border: #1E3A8A; /* Dark blue border */
+  --card-second-chance-bg: #FFD93D; /* Golden yellow */
+  --card-second-chance-glow: #FFF4CC; /* Soft yellow glow */
+  --card-flip3-bg: #9B59B6;      /* Purple for flip 3 */
+  
+  /* Semantic Mappings */
+  --primary-bg: var(--flip7-bg);
+  --primary-accent: var(--flip7-yellow);
+  --primary-border: var(--flip7-navy);
+  --primary-red: var(--flip7-coral);
+  --primary-blue: var(--flip7-blue);
+  --primary-green: var(--flip7-green);
+  --primary-yellow: var(--flip7-yellow);
+  --primary-purple: var(--flip7-purple);
+  --primary-orange: var(--flip7-salmon);
+  --primary-lilac: var(--card-flip3-bg);
+  
+  /* UI Colors */
+  --white: #FFFFFF;
+  --light-gray: #F0F0F0;
+  --dark-gray: var(--flip7-grey);
+  --card-bg: var(--flip7-cream);
+  
+  /* Alias for backwards compatibility */
+  --flip7-red: var(--flip7-coral);
+  --flip7-pink: var(--flip7-purple);
+  --flip7-light-yellow: var(--flip7-yellow);
+}
+
+/* Global Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', 'Helvetica', sans-serif;
+  background: var(--flip7-bg);
+  color: var(--flip7-navy);
+}
+
+* {
+  box-sizing: border-box;
+}
